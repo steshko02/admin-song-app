@@ -1,0 +1,28 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<body>
+<h3>User list</h3>
+<table>
+    <tr>
+        <th>NAME</th>
+        <th>EMAIL</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.getName()}"></td>
+        <td th:text="${user.getEmail()}"></td>
+        <td>
+            <form th:if="${user.isBlocked()}" th:action="@{/admin1/unblock}" method="post">
+                <input type="hidden" th:name="userId" th:value="${user.getId()}"/>
+                <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                <button type="submit" class="btn btn-success">Unblock</button>
+            </form>
+            <form th:unless="${user.isBlocked()}" th:action="@{/admin1/block}" method="post">
+                <input type="hidden" th:name="userId" th:value="${user.getId()}"/>
+                <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                <button type="submit" class="btn btn-success">Block</button>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

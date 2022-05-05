@@ -1,0 +1,32 @@
+#auth0:
+#  oauth2:
+#    issuer: https://dev-hf6j43cb.eu.auth0.com/
+#    audience: http://localhost:8080/
+
+spring:
+  security:
+    oauth2:
+      auth0:
+        resourceserver:
+          jwt:
+            issuer-uri: https://dev-hf6j43cb.eu.auth0.com/
+
+#spring:
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          auth0:
+#            client-id: cZixQcgCJOj4m0xwGdEoJ7y0EfwTIDXL
+#            client-secret: zajeDbViNQNoa-Jbpb73yY2p3nOV6HcR8HTY0IsRugMjbedoIk4F7JMImd_F4jo9
+#            scope:
+#              - openid
+#              - profile
+#              - email
+#        provider:
+#          auth0:
+#            # trailing slash is important!
+#            issuer-uri: https://dev-hf6j43cb.eu.auth0.com/
+##      resourceserver:
+##        jwt:
+##          issuer-uri: https://dev-hf6j43cb.eu.auth0.com/
